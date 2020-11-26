@@ -1,3 +1,3 @@
-Project usinf CQRS with Mediator
+Project using CQRS with Mediator
 
 Command Query Responsibility Segregation

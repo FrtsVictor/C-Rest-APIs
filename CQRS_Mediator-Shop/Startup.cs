@@ -1,3 +1,4 @@
+using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Shop.Domain.Handlers;
+using MediatR;
 
 namespace Shop
 {
@@ -29,7 +31,8 @@ namespace Shop
         {
 
             services.AddControllers();
-            services.AddTransient<ICreateCutomerHandler, CreateCustomerHandler>();
+            // services.AddTransient<ICreateCutomerHandler, CreateCustomerHandler>();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop", Version = "v1" });

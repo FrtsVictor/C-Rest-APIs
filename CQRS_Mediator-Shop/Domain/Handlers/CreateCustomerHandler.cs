@@ -1,18 +1,23 @@
 using System;
 using Shop.Domain.Commands.Response;
 using Shop.Domain.Commands.Requests;
+using MediatR;
+using System.Threading.Tasks;
+using System.Threading;
+
 namespace Shop.Domain.Handlers
 
 {
-    public class CreateCustomerHandler : ICreateCutomerHandler
+    public class CreateCustomerHandler :
+    IRequestHandler<CreateCustomerRequest, CreateCustomerResponse>
     {
-        public CreateCustomerResponse Handle(CreateCustomerRequest request)
+        public Task<CreateCustomerResponse> Handle(CreateCustomerRequest request, CancellationToken cancellationToken)
         {
             // verify if client exists
             // validate data
             //insert cliente
             //send email welvome
-            return new CreateCustomerResponse
+            var result = new CreateCustomerResponse
             {
                 Id = Guid.NewGuid(),
                 Name = "Victor",
@@ -20,6 +25,9 @@ namespace Shop.Domain.Handlers
                 Username = "Victorx",
                 Created_At = DateTime.Now
             };
+            return Task.FromResult(result);
         }
+
+
     }
 }

@@ -2,7 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.Commands.Response;
 using Shop.Domain.Commands.Requests;
 using Shop.Domain.Handlers;
-
+using MediatR;
+using System.Threading.Tasks;
 
 namespace Shop.Domain.controllers
 {
@@ -13,12 +14,12 @@ namespace Shop.Domain.controllers
 
         [HttpPost]
         [Route("")]
-        public CreateCustomerResponse Create(
-            [FromServices] ICreateCutomerHandler handler, //here i add the injection
+        public Task<CreateCustomerResponse> Create(
+            [FromServices] IMediator mediator, //here i add the injection
             [FromBody] CreateCustomerRequest commad
         )
         {
-            return handler.Handle(commad);
+            return mediator.Send(commad);
         }
 
     }

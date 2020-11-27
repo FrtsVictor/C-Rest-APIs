@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using System;
 
 namespace Catalog_Net5.Entities

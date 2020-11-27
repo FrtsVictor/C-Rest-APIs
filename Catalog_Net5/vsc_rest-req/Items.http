@@ -2,5 +2,27 @@ GET https://localhost:5001/v1/items
 Accept: application/json
 ###
 
-GET https://localhost:5001/v1/items/fcff7931-15d4-4f26-989c-6fb6539dd23a
+GET https://localhost:5001/v1/items/9ffd3d61-534e-407f-9f46-1ac24c453805
 Accept: application/json
+###
+
+POST https://localhost:5001/v1/items
+Content-Type: application/json
+
+        {
+            "name": "Iron Gloves",
+            "price": 5
+        }
+###
+
+PUT https://localhost:5001/v1/items/9ffd3d61-534e-407f-9f46-1ac24c453805
+Content-Type: application/json
+
+        {
+            "name": "Magic Long Sword",
+            "price": 100
+        }
+###
+
+DELETE https://localhost:5001/v1/items/9ffd3d61-534e-407f-9f46-1ac24c453805
+Content-Type: application/json

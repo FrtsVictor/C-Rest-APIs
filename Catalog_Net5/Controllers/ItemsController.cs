@@ -24,9 +24,7 @@ namespace Catalog_Net5.Controllers
         public IEnumerable<ItemDto> GetItems()
         {
             var items = repository.GetItems().Select(item => item.AsDto());
-
             return items;
-
         }
 
         [HttpGet("{id}")]
@@ -53,10 +51,7 @@ namespace Catalog_Net5.Controllers
                 Price = itemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow
             };
-
             repository.CreateItem(item);
-
-            Console.WriteLine(nameof(GetItem));
 
             return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item.AsDto());
         }
@@ -64,7 +59,6 @@ namespace Catalog_Net5.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateItem(Guid id, UpdateItemDto itemDto)
         {
-
             var existingItem = repository.GetItem(id);
 
             if (existingItem is null)
@@ -92,7 +86,6 @@ namespace Catalog_Net5.Controllers
             {
                 return NotFound();
             }
-
             repository.DeleteItem(id);
 
             return NoContent();

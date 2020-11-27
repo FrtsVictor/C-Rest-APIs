@@ -1,8 +1,10 @@
+using System.Net.NetworkInformation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Catalog_Net5.Repositories;
+using Catalog_Net5.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson;
 
 namespace Net5
 {
@@ -28,7 +34,17 @@ namespace Net5
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddSingleton<IItemsRepository, InMemoryRepository>();
+            //how to serialize a couple of types in mongoDb 
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+
+
+            services.AddSingleton<IMongoClient>(serviceProvider =>
+            {                                           //retrive configuration on asspsettings.jon object 
+                var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+                return new MongoClient(settings.ConnectionString);
+            });
+            services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

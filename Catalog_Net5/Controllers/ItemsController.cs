@@ -1,8 +1,11 @@
+using System.ComponentModel;
+using System.Linq;
 using System.Collections.Generic;
 using Catalog_Net5.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Catalog_Net5.Entities;
 using System;
+using Catalog_Net5.Dtos;
 
 namespace Catalog_Net5.Controllers
 {
@@ -10,24 +13,25 @@ namespace Catalog_Net5.Controllers
     [Route("v1/items")]
     public class ItemsController : ControllerBase
     {
-        private readonly InMemoryRepository repository;
+        private readonly IItemsRepository repository;
 
-        public ItemsController()
+        public ItemsController(IItemsRepository repository)
         {
-            repository = new InMemoryRepository();
+            this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDto> GetItems()
         {
-            var items = repository.GetItems();
+            var items = repository.GetItems().Select(item => item.AsDto());
+
             return items;
 
         }
 
         [HttpGet("{id}")]
         //With action Result i can return more than 1 type of element MVC in this case Not Found or item
-        public ActionResult<Item> GetItem(Guid id)
+        public ActionResult<ItemDto> GetItem(Guid id)
         {
             var item = repository.GetItem(id);
 
@@ -36,7 +40,7 @@ namespace Catalog_Net5.Controllers
                 return NotFound();
             }
 
-            return item;
+            return item.AsDto();
         }
     }
 }

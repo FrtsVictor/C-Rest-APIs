@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Catalog_Net5.Repositories
 {
-    public class InMemoryRepository
+    public class InMemoryRepository : IItemsRepository
     {
         private readonly List<Item> items = new()
         {

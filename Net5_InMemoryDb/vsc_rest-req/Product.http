@@ -1,0 +1,28 @@
+GET https://localhost:5001/v1/products
+###
+
+GET https://localhost:5001/v1/products/categories/2
+###
+
+POST https://localhost:5001/v1/products
+Content-Type: application/json
+
+{
+  "name" : "Magic Shield",
+  "description": "A simple magic shield ",
+  "price": 199.99,
+  "categoryId": 2
+}
+###
+
+
+POST https://localhost:5001/v1/products
+Content-Type: application/json
+
+{
+  "name" : "Magic Sword",
+  "description": "A rare magic sword ",
+  "price": 999.99,
+  "categoryId": 2
+}
+

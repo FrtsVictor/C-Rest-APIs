@@ -1,0 +1,18 @@
+GET https://localhost:5001/v1/categories
+###
+
+
+POST https://localhost:5001/v1/categories
+Content-Type: application/json
+
+{
+  "name" : "Shield"
+}
+###
+
+POST https://localhost:5001/v1/categories
+Content-Type: application/json
+
+{
+  "name" : "Sword"
+}

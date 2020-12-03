@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Domain.DDD_API.Domain.Entities;
 
-namespace DDD_API.Infrastructure.Data
+namespace Infrastructure.DDD_API.Infrastructure.Data
 {
     public class SqlContext : DbContext
     {

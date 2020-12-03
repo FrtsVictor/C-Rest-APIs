@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/net3.1_DDD_EF_Docker_IOC.csproj",
+                "${workspaceFolder}/net3_DDD_EF_Docker_IOC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/net3.1_DDD_EF_Docker_IOC.csproj",
+                "${workspaceFolder}/net3_DDD_EF_Docker_IOC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/net3.1_DDD_EF_Docker_IOC.csproj",
+                "${workspaceFolder}/net3_DDD_EF_Docker_IOC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

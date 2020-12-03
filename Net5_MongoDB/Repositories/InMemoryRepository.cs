@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Catalog_Net5.Entities;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Catalog_Net5.Repositories
 {
@@ -17,36 +16,31 @@ namespace Catalog_Net5.Repositories
             new Item { Id = Guid.NewGuid(), Name = "Bronze Shield", Price = 12, CreatedDate = DateTimeOffset.Now },
             new Item { Id = Guid.NewGuid(), Name = "Bronze Sword", Price = 15, CreatedDate = DateTimeOffset.Now }
         };
-        public async Task<IEnumerable<Item>> GetItemsAsync() //creating a iterable list
+        public IEnumerable<Item> GetItems() //creating a iterable list
         {
-            return await Task.FromResult(items);
+            return items;
         }
 
-        public async Task<Item> GetItemAsync(Guid id) //retrive item based on iterable list
+        public Item GetItem(Guid id) //retrive item based on iterable list
         {
-            var item = items.Where(items => items.Id == id).SingleOrDefault();
-            return await Task.FromResult(item);
+            return items.Where(items => items.Id == id).SingleOrDefault();
         }
 
-        public async Task CreateItemAsync(Item item)
+        public void CreateItem(Item item)
         {
             items.Add(item);
-            await Task.CompletedTask;
         }
 
-        public async Task UpdateItemAsync(Item item)
+        public void UpdateItem(Item item)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == item.Id);
             items[index] = item;
-            await Task.CompletedTask;
         }
 
-        public async Task DeleteItemAsync(Guid id)
+        public void DeleteItem(Guid id)
         {
             var index = items.FindIndex(existingItem => existingItem.Id == id);
             items.RemoveAt(index);
-            await Task.CompletedTask;
-
         }
     }
 }

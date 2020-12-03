@@ -6,11 +6,6 @@ GET https://localhost:5001/v1/items/9ffd3d61-534e-407f-9f46-1ac24c453805
 Accept: application/json
 ###
 
-
-GET https://localhost:5001/health/ready
-Accept: application/json
-###
-
 POST https://localhost:5001/v1/items
 Content-Type: application/json
 

@@ -9,9 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestApiModeloDDD.Application\RestApiModeloDDD.Application.csproj" />
-    <ProjectReference Include="..\RestApiModeloDDD.Domain.Core\RestApiModeloDDD.Domain.Core.csproj" />
-    <ProjectReference Include="..\RestApiModeloDDD.Domain.Services\RestApiModeloDDD.Domain.Services.csproj" />
+    <!-- <ProjectReference Include="..\..\Domain\DDD_API.Domain.Services\DDD_API.Domain.Services.csproj" /> -->
+    <ProjectReference Include="..\..\Domain\DDD_API.Domain.Core\DDD_API.Domain.Core.csproj" />
     <ProjectReference Include="..\..\Domain\DDD_API.Domain\DDD_API.Domain.csproj" />
   </ItemGroup>
 

@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\DDD_API.Domain\DDD_API.Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\DDD_API.Domain.Core\DDD_API.Domain.Core.csproj" />
+  </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@ using Domain.DDD_API.Domain.Entities;
 
 namespace DDD_API.Domain.Services
 {
-    public class ClientService : ServiceBase<Client>, IServiceClient
+    public class ClientService : BaseService<Client>, IClientService
     {
         private readonly IClientRepository clientRepository;
 

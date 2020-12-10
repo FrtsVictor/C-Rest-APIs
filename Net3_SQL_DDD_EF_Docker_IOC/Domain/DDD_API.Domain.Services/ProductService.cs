@@ -4,7 +4,7 @@ using Domain.DDD_API.Domain.Entities;
 
 namespace DDD_API.Domain.Services
 {
-    public class ProductService : ServiceBase<Product>, IServiceProduct
+    public class ProductService : BaseService<Product>, IProductService
     {
         private readonly IProductRepository productRepository;
 

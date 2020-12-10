@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace DDD_API.Domain.Core.Interfaces.Services
 {
-    public interface IServiceBase<TEntity> where TEntity : class
+    public interface IBaseService<TEntity> where TEntity : class
     {
         void Add(TEntity obj);
         void Update(TEntity obj);

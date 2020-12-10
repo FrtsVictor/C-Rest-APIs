@@ -4,12 +4,12 @@ using DDD_API.Domain.Core.Interfaces.Services;
 
 namespace DDD_API.Domain.Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {
 
         private readonly IRepositoryBase<TEntity> repository;
 
-        public ServiceBase(IRepositoryBase<TEntity> repository)
+        public BaseService(IRepositoryBase<TEntity> repository)
         {
             this.repository = repository;
         }

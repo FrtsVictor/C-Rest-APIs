@@ -1,38 +1,51 @@
+using System.ComponentModel.Design;
 using System.Collections.Generic;
 using Application.DDD_API.Application.Dtos;
 using Application.DDD_API.Application.Interface;
+using Application.DDD_API.Application.Interface.Mappers;
 using DDD_API.Domain.Core.Interfaces.Services;
-using Infrastructure.DDD_API.Infrastructure.CrossCuting.Interfaces;
 
 namespace Application.DDD_API.Application
 {
     public class ClientServiceApplication : IClientServiceApplication
     {
         private readonly IClientService clientService;
-        private readonly IClientMapper mapperClient;
+        private readonly IClientMapper clientMapper;
+        public ClientServiceApplication(IClientService clientService,
+                                        IClientMapper clientMapper)
+        {
+            this.clientService = clientService;
+            this.clientMapper = clientMapper;
+        }
+        
         public void Add(ClientDto clientDto)
         {
-            throw new System.NotImplementedException();
+            var client = clientMapper.MapperDtoToEntity(clientDto);
+            clientService.Add(client);
         }
 
         public IEnumerable<ClientDto> GetAll()
         {
-            throw new System.NotImplementedException();
+            var clients = clientService.GetAll();
+            return clientMapper.MapperListClientDto(clients);
         }
 
         public ClientDto GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var client = clientService.GetById(id);
+            return clientMapper.MaperEntityToDto(client);
         }
 
         public void Remove(ClientDto clientDto)
         {
-            throw new System.NotImplementedException();
+            var client = clientMapper.MapperDtoToEntity(clientDto);
+            clientService.Remove(client);
         }
 
         public void Update(ClientDto clientDto)
         {
-            throw new System.NotImplementedException();
+            var client = clientMapper.MapperDtoToEntity(clientDto);
+            clientService.Update(client);
         }
     }
 }

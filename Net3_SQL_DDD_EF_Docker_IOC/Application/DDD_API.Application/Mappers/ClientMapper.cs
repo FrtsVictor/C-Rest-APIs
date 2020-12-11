@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Application.DDD_API.Application.Dtos;
+using Application.DDD_API.Application.Interface.Mappers;
 using Domain.DDD_API.Domain.Entities;
-using Infrastructure.DDD_API.Infrastructure.CrossCuting.Interfaces;
 
-namespace Infrastructure.DDD_API.Infrastructure.CrossCuting.Map
+namespace Application.DDD_API.Application.Mappers
 {
     public class ClientMapper : IClientMapper
     {

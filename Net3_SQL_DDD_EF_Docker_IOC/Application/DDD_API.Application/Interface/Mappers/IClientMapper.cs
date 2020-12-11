@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Application.DDD_API.Application.Dtos;
 using Domain.DDD_API.Domain.Entities;
 
-namespace Infrastructure.DDD_API.Infrastructure.CrossCuting.Interfaces
+namespace Application.DDD_API.Application.Interface.Mappers
 {
     public interface IClientMapper
     {

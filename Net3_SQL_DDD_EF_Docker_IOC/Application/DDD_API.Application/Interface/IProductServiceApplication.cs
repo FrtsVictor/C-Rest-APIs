@@ -3,7 +3,7 @@ using Application.DDD_API.Application.Dtos;
 
 namespace Application.DDD_API.Application.Interface
 {
-    public interface IProductApplication
+    public interface IProductServiceApplication
     {
          void Add(ProductDto productDto);
         void Update(ProductDto productDto);

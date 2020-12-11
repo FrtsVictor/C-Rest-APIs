@@ -4,12 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+ <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <!-- <ProjectReference Include="..\..\Domain\DDD_API.Domain.Services\DDD_API.Domain.Services.csproj" /> -->
+    <ProjectReference Include="..\..\Domain\DDD_API.Domain.Services\DDD_API.Domain.Services.csproj" />
     <ProjectReference Include="..\..\Domain\DDD_API.Domain.Core\DDD_API.Domain.Core.csproj" />
     <ProjectReference Include="..\..\Domain\DDD_API.Domain\DDD_API.Domain.csproj" />
     <ProjectReference Include="..\..\Application\DDD_API.Application\DDD_API.Application.csproj" />

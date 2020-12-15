@@ -34,10 +34,13 @@ namespace Application.DDD_API.Application.Mappers
 
         public IEnumerable<ClientDto> MapperListClientDto(IEnumerable<Client> clients)
         {
-            var dto = clients.Select(c => new ClientDto  { Id = c.Id,
-                                                           Name = c.Name,
-                                                           LastName = c.LastName,
-                                                           Email = c.Email });
+            var dto = clients.Select(c => new ClientDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                LastName = c.LastName,
+                Email = c.Email
+            });
             return dto;
         }
     }

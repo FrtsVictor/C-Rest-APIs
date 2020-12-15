@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Infrastructure.DDD_API.Infrastructure.Data;
+using Infrastructure.DDD_API.Infrastructure.CrossCuting.IOC;
 
-namespace DDD_API
+namespace Services.DDD_API
 {
     public class Startup
     {
@@ -22,18 +20,22 @@ namespace DDD_API
         }
 
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var connection = Configuration["SqlConnection:SqlConnectionString"];
+            services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DDDD_API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API DDD Model", Version = "v1" });
             });
         }
-
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new IOCModule());
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -41,7 +43,7 @@ namespace DDD_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DDDD_API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API DDD Model"));
             }
 
             app.UseHttpsRedirection();

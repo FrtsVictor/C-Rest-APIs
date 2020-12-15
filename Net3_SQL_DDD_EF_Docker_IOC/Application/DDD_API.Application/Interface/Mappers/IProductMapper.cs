@@ -6,7 +6,7 @@ namespace Application.DDD_API.Application.Interface.Mappers
 {
     public interface IProductMapper
     {
-        Product MapperDtoEntity (ProductDto productDto);
+        Product MapperDtoEntity(ProductDto productDto);
         IEnumerable<ProductDto> MapperListProductDto(IEnumerable<Product> products);
         ProductDto MapperEntityToDto(Product product);
     }

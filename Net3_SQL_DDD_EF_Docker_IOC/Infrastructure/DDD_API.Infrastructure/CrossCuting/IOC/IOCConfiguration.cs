@@ -3,7 +3,6 @@ using DDD_API.Domain.Core.Interfaces.Services;
 using DDD_API.Domain.Services;
 using DDD_API.Domain.Core.Interfaces.Repositories;
 using DDD_API.Infrastructure.Data.Repositories;
-using System.Collections.Generic;
 using Application.DDD_API.Application.Interface.Mappers;
 using Application.DDD_API.Application.Interface;
 using Application.DDD_API.Application.Mappers;
@@ -14,10 +13,9 @@ namespace Infrastructure.DDD_API.Infrastructure.CrossCuting.IOC
 {
     public class IOCConfiguration
     {
-
         public static void Load(ContainerBuilder builder)
         {
-            #region MyRegion
+            #region IOC
 
             builder.RegisterType<ClientServiceApplication>().As<IClientServiceApplication>();
             builder.RegisterType<ProductServiceApplication>().As<IProductServiceApplication>();

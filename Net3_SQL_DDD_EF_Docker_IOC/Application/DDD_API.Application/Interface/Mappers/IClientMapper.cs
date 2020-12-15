@@ -6,7 +6,7 @@ namespace Application.DDD_API.Application.Interface.Mappers
 {
     public interface IClientMapper
     {
-        Client MapperDtoToEntity (ClientDto clientDto);
+        Client MapperDtoToEntity(ClientDto clientDto);
         IEnumerable<ClientDto> MapperListClientDto(IEnumerable<Client> clients);
         ClientDto MaperEntityToDto(Client client);
     }

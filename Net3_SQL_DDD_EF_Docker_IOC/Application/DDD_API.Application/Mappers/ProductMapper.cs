@@ -28,14 +28,16 @@ namespace Application.DDD_API.Application.Mappers
                 Name = product.Name,
                 Price = product.Price,
             };
-            return productDto;   
+            return productDto;
         }
         public IEnumerable<ProductDto> MapperListProductDto(IEnumerable<Product> products)
         {
-             var dto = products.Select(p => new ProductDto  {   Id = p.Id,
-                                                                Name = p.Name,
-                                                                Price = p.Price
-             });
+            var dto = products.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price
+            });
             return dto;
         }
     }

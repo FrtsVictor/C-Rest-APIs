@@ -5,6 +5,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4"/>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2"/>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\2 - UserManager.Domain\UserManager.Domain.csproj"/>

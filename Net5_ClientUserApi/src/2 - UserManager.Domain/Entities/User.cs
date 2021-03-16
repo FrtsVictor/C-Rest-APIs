@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UserManager.Domain.Validators;
+using UserManager.Core.Exceptions;
 
 namespace UserManager.Domain.Entities
 {
@@ -52,7 +53,7 @@ namespace UserManager.Domain.Entities
                 foreach(var error in validation.Errors)
                      _errors.Add(error.ErrorMessage);
                      
-                throw new Exception("Some fields are invalid " + _errors[0]);
+                throw new DomainException("Some fields are invalid " + _errors[0]);
             }
             
             return true;

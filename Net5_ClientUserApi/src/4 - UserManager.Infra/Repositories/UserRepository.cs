@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using UserManager.Domain.Entities;
 using UserManager.Infra.Context;
 using UserManager.Infra.Interfaces;
@@ -15,61 +17,48 @@ namespace UserManager.Infra.Repositories
             _context = context;
         }
 
-        public async Task<User> SearchByEmail(string email)
+        public async Task<User> GetByEmail(string email)
         {
             var user = await _context.Users
-                                .Where
-                                (
-                                    x => 
-                                        x.Email.Tolower().Contains(email.ToLower())
-                                )
-                                .AsNoTracking()
-                                .ToListAsync();
+                                   .Where
+                                   (
+                                        x =>
+                                            x.Email.ToLower() == email.ToLower()
+                                    )
+                                    .AsNoTracking()
+                                    .ToListAsync();
 
             return user.FirstOrDefault();
         }
 
-        public async Task<User> GetByName(string email)
+        public async Task<List<User>> SearchByEmail(string email)
         {
-            var user = await _context.Users
-                                .Where
-                                (
-                                    x => 
-                                        x.Name.Tolower().contains(name.ToLower())
-                                )
-                                .AsNoTracking()
-                                .ToListAsync();
+            var allUsers = await _context.Users
+                                   .Where
+                                   (
+                                        x =>
+                                            x.Email.ToLower().Contains(email.ToLower())
+                                    )
+                                    .AsNoTracking()
+                                    .ToListAsync();
 
-            return user.FirstOrDefault();
+            return allUsers;
         }
 
-        public async Task<User> SearchByName(string email)
+        public async Task<List<User>> SearchByName(string name)
         {
-            var user = await _context.Users
-                                .Where
-                                (
-                                    x => 
-                                        x.Name.Tolower().contains(name.ToLower())
-                                )
-                                .AsNoTracking()
-                                .ToListAsync();
+            var allUsers = await _context.Users
+                                   .Where
+                                   (
+                                        x =>
+                                            x.Name.ToLower().Contains(name.ToLower())
+                                    )
+                                    .AsNoTracking()
+                                    .ToListAsync();
 
-            return user.FirstOrDefault();
+            return allUsers;
         }
 
-        public Task<User> GetByEmail(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<List<User>> IUserRepository.SearchByEmail(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<List<User>> IUserRepository.SearchByName(string email)
-        {
-            throw new System.NotImplementedException();
-        }
+       
     }
 }
